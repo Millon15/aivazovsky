@@ -85,7 +85,7 @@ export const Timeline: React.FC<TimelineProps> = ({ paintings, onSelect }) => {
                     <Cell 
                         key={`cell-${index}`} 
                         fill={index % 2 === 0 ? '#3b82f6' : '#0ea5e9'} 
-                        className="cursor-pointer hover:opacity-100 opacity-80 transition-all duration-300 hover:scale-150 filter drop-shadow-lg"
+                        className="cursor-pointer opacity-80 transition-opacity duration-300 filter drop-shadow-lg"
                         stroke="none"
                     />
                     ))}
