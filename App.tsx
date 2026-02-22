@@ -7,15 +7,14 @@ import { paintingsData } from './data/paintings';
 const App: React.FC = () => {
   const [paintings, setPaintings] = useState<Painting[]>(paintingsData);
   const [selectedPainting, setSelectedPainting] = useState<Painting | null>(null);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    try { return localStorage.getItem('darkMode') === 'true'; } catch { return false; }
+  });
 
-  // Toggle Dark Mode Class
+  // Toggle Dark Mode Class + persist
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', darkMode);
+    try { localStorage.setItem('darkMode', String(darkMode)); } catch {}
   }, [darkMode]);
 
   return (
